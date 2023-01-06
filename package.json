@@ -1,0 +1,24 @@
+{
+  "name": "alarm-clock-tech-exercise",
+  "version": "1.0.0",
+  "description": "Analog Alarm Clock Tech Exercise",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "serve dist"
+  },
+  "keywords": [],
+  "author": "Justin Gluck",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "serve": "^14.1.2",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
