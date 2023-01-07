@@ -1,8 +1,15 @@
+import _ from "lodash";
 import Clock from "./pages/clock.html";
 import "./style.scss";
 
-function init() {
-  function render() {
+class init {
+  constructor() {
+    document.body.appendChild(this.render());
+    this.setTime(); // set time on load
+    setInterval(this.setTime.bind(this), 1000);
+  }
+
+  render() {
     const wrapper = document.createElement("main");
 
     wrapper.setAttribute("id", "clock");
@@ -11,7 +18,7 @@ function init() {
     return wrapper;
   }
 
-  function setTime() {
+  setTime() {
     const hourshand = document.querySelector(".clock-hands__hours");
     const minuteshand = document.querySelector(".clock-hands__minutes");
     const secondshand = document.querySelector(".clock-hands__seconds");
@@ -20,17 +27,14 @@ function init() {
     const minutes = (seconds + time.getMinutes()) / 60;
     const hours = (minutes + time.getHours()) / 12;
 
-    setRotation(secondshand, seconds);
-    setRotation(minuteshand, minutes);
-    setRotation(hourshand, hours);
+    this.setRotation(secondshand, seconds);
+    this.setRotation(minuteshand, minutes);
+    this.setRotation(hourshand, hours);
   }
 
-  function setRotation(element, rotationRatio) {
+  setRotation(element, rotationRatio) {
     element.style.setProperty("--rotation", rotationRatio * 360);
   }
-  setInterval(setTime, 1000);
-  document.body.appendChild(render());
-  setTime();
 }
 
-init();
+new init();
