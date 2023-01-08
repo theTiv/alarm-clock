@@ -66,7 +66,18 @@ class AlarmClock {
   }
 
   setAlarmTime() {
+    const alarmWarningSelector = "alarm-control__message-warning";
     const alarmTime = document.querySelector(".alarm-control__input").value;
+    const alarmMessage = document.querySelector(`.${alarmWarningSelector}`);
+
+    if (!alarmTime) {
+      alarmMessage.classList.add(`${alarmWarningSelector}--visible`);
+      return;
+    } else if (
+      alarmMessage.classList.contains(`${alarmWarningSelector}--visible`)
+    ) {
+      alarmMessage.classList.remove(`${alarmWarningSelector}--visible`);
+    }
 
     this.alarmTime = alarmTime;
     this.alarmSet.value = `Alarm Set`;
@@ -80,7 +91,8 @@ class AlarmClock {
     this.audio.play();
 
     // Update UI
-    this.alarmStatus.innerText = `Alarm is ringing`;
+    this.alarmStatus.classList.add("alarm-control__alarm-status--ringing");
+    this.alarmStatus.innerText = `Alarm is ringing!`;
     this.leftBell.classList.add("bell-ringing");
     this.rightBell.classList.add("bell-ringing");
   }
@@ -91,6 +103,7 @@ class AlarmClock {
 
     // Update UI
     this.alarmSet.value = "Set Alarm";
+    this.alarmStatus.classList.remove("alarm-control__alarm-status--ringing");
     this.alarmStatus.innerText = `The Alarm is now off`;
     this.leftBell.classList.remove("bell-ringing");
     this.rightBell.classList.remove("bell-ringing");

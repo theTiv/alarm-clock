@@ -15,7 +15,25 @@ $background_color: #f2f4f5;
         display: flex;
         justify-content: space-around;
         width: 100%;
+        margin-bottom: 0;
+
+        &:last-child {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__alarm-status {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 30px;
         margin-bottom: 20px;
+
+        &--ringing {
+            color: #f00;
+            animation: flashingText 1s linear infinite;
+        }
     }
 
     &__label {
@@ -49,11 +67,25 @@ $background_color: #f2f4f5;
         font-family: 'Poppins', sans-serif;
         font-size: 1rem;
         font-weight: 400;
-        padding: 10px 20px;
+        padding: 6px 10px;
         transition: all .2s ease-in-out;
 
         &:hover {
             background: rgba(0, 0, 0, .1);
+            border-radius: 12px;
+        }
+    }
+
+    &__message-warning {
+        color: #f00;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 20px;
+        visibility: hidden;
+
+        &--visible {
+            visibility: visible;
         }
     }
 }
@@ -103,4 +135,10 @@ input[type=time] {
 	&::-webkit-clear-button {
 		display: none;
 	}
+}
+
+@keyframes flashingText {
+  50% {
+    opacity: 0;
+  }
 }
