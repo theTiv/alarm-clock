@@ -7,13 +7,17 @@ import "./style.scss";
 class AlarmClock {
   constructor(alarmTime = null) {
     this.alarmTime = alarmTime; // time to set alarm
-    console.log(this.alarmTime);
     document.body.appendChild(this.render()); // add clock elements to DOM
     this.updateTime(); // set time on load
     setInterval(this.updateTime.bind(this), 1000); // update time every second
     this.addEventListeners(); // add event listeners
+
+    // DOM elements
     this.leftBell = document.querySelector(".alarm-bells__bell--left");
     this.rightBell = document.querySelector(".alarm-bells__bell--right");
+    this.alarmStatus = document.querySelector("#alarm_status"); // alarm status
+    this.alarmSet = document.querySelector("#set_alarm"); // alarm set button
+    this.audio = document.querySelector("#alarm_audio");
   }
 
   render() {
@@ -41,9 +45,7 @@ class AlarmClock {
     this.setRotation(secondsHand, seconds);
     this.setRotation(minutesHand, minutes);
     this.setRotation(hoursHand, hours);
-    console.log("alarmTimes updateTime");
-    console.log(digitalTime);
-    console.log(this.alarmTime);
+
     if (digitalTime == this.alarmTime) {
       this.playAlarm();
     }
@@ -65,27 +67,31 @@ class AlarmClock {
 
   setAlarmTime() {
     const alarmTime = document.querySelector(".alarm-control__input").value;
-    // console.log(alarmTime);
+
     this.alarmTime = alarmTime;
-    document.querySelector("#set_alarm").value = `Alarm Set`;
-    document.querySelector(
-      "#alarm_status"
-    ).innerText = `Alarm time is set for ${alarmTime}`;
+    this.alarmSet.value = `Alarm Set`;
+    this.alarmStatus.innerText = `Alarm time is set for ${alarmTime}`;
   }
 
   playAlarm() {
-    const audio = document.querySelector("#alarm_audio");
-    audio.play();
-    document.querySelector("#alarm_status").innerText = `Alarm is ringing`;
+    this.audio.currentTime = 0; // reset audio to start
+    this.audio.muted = false; // unmute audio
+    this.audio.volume = 0.5; // set volume
+    this.audio.play();
+
+    // Update UI
+    this.alarmStatus.innerText = `Alarm is ringing`;
     this.leftBell.classList.add("bell-ringing");
     this.rightBell.classList.add("bell-ringing");
   }
 
   turnOffAlarm() {
-    console.log("Alarm off");
+    this.audio.muted = true; // mute audio
     this.alarmTime = null;
-    document.querySelector("#set_alarm").value = "Set Alarm";
-    document.querySelector("#alarm_status").innerText = `The Alarm is now off`;
+
+    // Update UI
+    this.alarmSet.value = "Set Alarm";
+    this.alarmStatus.innerText = `The Alarm is now off`;
     this.leftBell.classList.remove("bell-ringing");
     this.rightBell.classList.remove("bell-ringing");
   }
