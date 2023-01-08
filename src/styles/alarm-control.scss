@@ -1,0 +1,106 @@
+$color_1: #2a2c2d;
+$color_2: #fff;
+$font_family_1: helvetica;
+$background_color: #f2f4f5;
+
+.alarm-control {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 70%;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    &__label {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__input {
+        background: none;
+        border: 1px solid #000;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        padding: 10px 20px;
+        transition: all .2s ease-in-out;
+        outline:none;
+
+        &:focus, &:active, &:hover, &:visited {
+            outline: none;
+        }
+    }
+
+    &__button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        padding: 10px 20px;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            background: rgba(0, 0, 0, .1);
+        }
+    }
+}
+
+// Time input field styling
+input[type=time] {
+	border: none;
+	color: $color_1;
+	font-size: 14px;
+	font-family: $font_family_1;
+	width: 160px;
+    
+	&::-webkit-datetime-edit-fields-wrapper {
+		display: flex;
+	}
+	&::-webkit-datetime-edit-text {
+		padding: 19px 4px;
+	}
+	&::-webkit-datetime-edit-hour-field {
+		background-color: $background_color;
+		border-radius: 15%;
+		padding: 19px 13px;
+        
+        &:focus {
+            background: rgba(0, 0, 0, .1);
+        }
+	}
+	&::-webkit-datetime-edit-minute-field {
+		background-color: $background_color;
+		border-radius: 15%;
+		padding: 19px 13px;
+        
+        &:focus {
+            background: rgba(0, 0, 0, .1);
+        }
+	}
+	&::-webkit-datetime-edit-ampm-field {
+		background-color: $background_color;
+		border-radius: 15%;
+		color: $color_2;
+		padding: 19px 13px;
+
+        &:focus {
+            background: rgba(0, 0, 0, .1);
+        }
+	}
+	&::-webkit-clear-button {
+		display: none;
+	}
+}
