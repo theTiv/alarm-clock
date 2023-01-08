@@ -1,0 +1,26 @@
+<div id="alarm_control" class="alarm-control__container">
+  <section class="alarm-control__row">
+    <label class="alarm-control__label" for="alarm_time">Set Alarm Time:</label>
+    <input
+      class="alarm-control__input"
+      type="time"
+      id="alarm_time"
+      name="alarm"
+    />
+  </section>
+  <section class="alarm-control__row">
+    <button class="alarm-control__button" type="button" id="alarm_off">
+      Turn Off Alarm
+    </button>
+    <input
+      id="set_alarm"
+      class="alarm-control__button"
+      type="submit"
+      value="Set Alarm"
+    />
+  </section>
+  <section class="alarm-control__row">
+    <div class="alarm-control__alarm-status" id="alarm_status"></div>
+  </section>
+  <audio id="alarm_audio" loop muted autoplay src="../sounds/alarm.mp3"></audio>
+</div>

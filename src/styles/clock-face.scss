@@ -1,0 +1,61 @@
+.clock {
+  position: relative;
+  background: url("./img/alarm-clock-face.png");
+  background-repeat: no-repeat;
+  width: 640px;
+  height: 640px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    z-index: 5;
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.clock-hands {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+
+    &__hours {
+      --rotation: 0;
+      @extend .clock-hands;
+
+      background: url("./img/alarm-clock-hours-hand.png");
+      width: 16px;
+      height: 115px;
+      transform-origin: bottom;
+      transform: translateX(-50%) rotate(calc(var(--rotation) *1deg));
+    }
+
+    &__minutes {
+      --rotation: 0;
+      @extend .clock-hands;
+
+      background: url("./img/alarm-clock-minutes-hand.png");
+      width: 18px;
+      height: 150px;
+      transform-origin: bottom;
+      transform: translateX(-50%) rotate(calc(var(--rotation) *1deg));
+    }
+
+    &__seconds {
+      --rotation: 0;
+      @extend .clock-hands;
+
+      bottom: 33%;
+      background: url("./img/alarm-clock-seconds-hand.png");
+      width: 19px;
+      height: 216px;
+      transform-origin: center;
+      transform: translateX(-50%) rotate(calc(var(--rotation) *1deg));
+      z-index: 4;
+    }
+}
