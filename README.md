@@ -6,13 +6,13 @@ This technical exercise is to recreate a traditional analog clock in digital for
 
 For ease of importing PNGs in Webpack over SVG loaders which can be problematic and for ease of styling I opted to export the Clock's assets as transparent PNGs. This required opening in Illustrator and ungrouping the assets in to the following:
 
-Clock Face (without Bells and Ringer Handle)
-Clock Ringer Handle
-Hour Hand
-Minutes Hand
-Seconds Hand
-Left Bell
-Right Bell
+- Clock Face (without Bells and Ringer Handle)
+- Clock Ringer Handle
+- Hour Hand
+- Minutes Hand
+- Seconds Hand
+- Left Bell
+- Right Bell
 
 **Setup Webpack**
 
@@ -22,10 +22,10 @@ A default test dependency when setting up Webpack 5 is Lodash which I used in in
 
 I also installed the following loaders:
 
-**Babel** for ES6 transpilation to ES5
-**HTML loader** to load the various UI 'views'
-**SASS Loader** to enable writing SCSS that compiles the CSS
-**Webpack Dev Server** to enable local development server and hot reloading
+- **Babel** for ES6 transpilation to ES5
+- **HTML loader** to load the various UI 'views'
+- **SASS Loader** to enable writing SCSS that compiles the CSS
+- **Webpack Dev Server** to enable local development server and hot reloading
 
 **Summary**
 
@@ -82,9 +82,5 @@ After running the 'npm run serve' command your default browser will open up a ne
 **ToDo**
 
 The code could be improved by creating ES6 module components however that seemed a but over the top for this application, however I have broke the code up in a component style by separating the loaded HTML views and corresponding stylesheets and this could improved to also incorporate a functional style of component with javascript for that part of the UI.
-
-In unsupported browsers, the time field control degrades gracefully to <input type="text">. This could be improved by using a polyfill to enable the time field to work in all browsers and also to add a validation check to ensure the time entered is in the correct format.
-
-Some methods could be export functions imported in to the index.js file to keep the code more modular and easier to test, for exampled the setRotation method could be exported and imported in to the index.js file and tested in isolation.
 
 The code could also incorporate Unit tests with ES6 class mocks in Jest to test each of the methods.
